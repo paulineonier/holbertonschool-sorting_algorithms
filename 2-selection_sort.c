@@ -19,6 +19,7 @@ void _swap(int *a, int *b)
  * selection_sort - sorts array integers in ascending order with Selection sort
  * @array: array to be sort
  * @size: size of array
+ * Complexité temporelle: O(n^2)
  */
 
 void selection_sort(int *array, size_t size)
