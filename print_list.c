@@ -3,18 +3,20 @@
 
 /**
  * print_list - Imprime une liste doublement chaînée d'entiers
- * @list: Pointeur vers le début de la liste
+ * @list: la liste to bi print
  */
 void print_list(const listint_t *list)
 {
-	const listint_t *current = list;
+	int i;
 
-	while (current != NULL)
+	i = 0;
+	while (list)
 	{
-		printf("%d", current->n);
-		if (current->next != NULL)
+		if (i > 0)
 			printf(", ");
-		current = current->next;
+		printf("%d", list->n);
+		i++;
+		list = list->next;
 	}
 	printf("\n");
 }

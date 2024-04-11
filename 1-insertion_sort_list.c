@@ -1,16 +1,10 @@
+#include "sort.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "sort.h"
 
 /**
- * insertion_sort_list - Imprime une liste doublement chaînée d'entie
-<<<<<<< HEAD
- * trie ine liste doublemt chain�e d'entiers par ordre
-=======
- * trie ine liste doublemt chain�e d'entiers par ordre
->>>>>>> refs/remotes/origin/main
- * croissant,en utilist l'agorithme de trie par insertion
- * @list: pointeir vers pointeur de la tete de liste
+ * insertion_sort_list - Trie une liste doublemt chaînéentiers par inserti
+ * @list: Pointeur vers un pointeur de la tête de la list
  */
 void insertion_sort_list(listint_t **list)
 {
@@ -26,7 +20,6 @@ void insertion_sort_list(listint_t **list)
 		while (insertion_point->prev != NULL &&
 				insertion_point->n < insertion_point->prev->n)
 		{
-			/* echanger les node */
 			if (insertion_point->prev->prev != NULL)
 				insertion_point->prev->prev->next = insertion_point;
 			if (insertion_point->next != NULL)
