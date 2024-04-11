@@ -1,0 +1,6 @@
+Meilleur cas :
+    O(n)
+Cas moyen :
+    O(n^2)
+Pire cas :
+    O(n^2)
