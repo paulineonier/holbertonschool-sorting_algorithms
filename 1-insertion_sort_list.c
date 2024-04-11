@@ -4,7 +4,11 @@
 
 /**
  * insertion_sort_list - Imprime une liste doublement chaînée d'entie
+<<<<<<< HEAD
  * trie ine liste doublemt chain�e d'entiers par ordre
+=======
+ * trie ine liste doublemt chain�e d'entiers par ordre
+>>>>>>> refs/remotes/origin/main
  * croissant,en utilist l'agorithme de trie par insertion
  * @list: pointeir vers pointeur de la tete de liste
  */
