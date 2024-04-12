@@ -1,38 +1,41 @@
 #include "sort.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
- * insertion_sort_list - Trie une liste doublemt chaînéentiers par inserti
- * @list: Pointeur vers un pointeur de la tête de la list
+ * insertion_sort_list - Function that sorts a doubly linked list in ascending
+ * @list: Pointer to the doubly linked list to be sorted.
+ *
+ * Return: This function does not return a value.
  */
+
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *insertion_point;
+	listint_t *current, *temp;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (!list || !*list || !(*list)->next)
 		return;
 
-	current = (*list)->next;
-	while (current != NULL)
+	for (current = (*list)->next; current; current = temp)
 	{
-		insertion_point = current;
-		while (insertion_point->prev != NULL &&
-				insertion_point->n < insertion_point->prev->n)
+		temp = current->next;
+
+		while (current->prev && current->prev->n > current->n)
 		{
-			if (insertion_point->prev->prev != NULL)
-				insertion_point->prev->prev->next = insertion_point;
-			if (insertion_point->next != NULL)
-				insertion_point->next->prev = insertion_point->prev;
-			insertion_point->prev->next = insertion_point->next;
-			insertion_point->next = insertion_point->prev;
-			insertion_point->prev = insertion_point->next->prev;
-			insertion_point->next->prev = insertion_point;
-			if (insertion_point->prev == NULL)
-				*list = insertion_point;
+			current->prev->next = current->next;
+			if (current->next)
+				current->next->prev = current->prev;
+
+			current->next = current->prev;
+			current->prev = current->next->prev;
+			current->next->prev = current;
+
+			if (!current->prev)
+				*list = current;
+			else
+				current->prev->next = current;
+
 			print_list(*list);
-			insertion_point = insertion_point->prev;
 		}
-		current = current->next;
+
 	}
+
 }
