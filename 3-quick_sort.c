@@ -3,7 +3,6 @@
 
 void _quick_sort(int *array, int low, int high, size_t size);
 int _partition(int *array, int low, int high, size_t size);
-void _swap(int *a, int *b);
 
 /**
  * quick_sort - Trie un tableau d'entiers par tri rapide (Quick sort)
@@ -19,60 +18,66 @@ void quick_sort(int *array, size_t size)
 }
 
 /**
- * _quick_sort - Fonction récursive pour trier un sous-tablea
- * @array: Le tableau d'entiers trier
- * @low: L'indice de début du sous-tablea
- * @high: L'indice de fin du sous-tableau
+ * _quick_sort - Fonction récursive pour trier un tableau par quick sort
+ * @array: Le tableau d'entiers à trier
+ * @low: Index du premier élément
+ * @high: Index du dernier élément
  * @size: Taille du tableau
  */
 void _quick_sort(int *array, int low, int high, size_t size)
 {
+	(void)array;
+	(void)low;
+	(void)high;
+	(void)size;
+
 	if (low < high)
 	{
-		int pivot_index = _partition(array, low, high, size);
+		int pi = _partition(array, low, high, size);
 
-		_quick_sort(array, low, pivot_index - 1, size);
-		_quick_sort(array, pivot_index + 1, high, size);
+		_quick_sort(array, low, pi - 1, size);
+		_quick_sort(array, pi + 1, high, size);
 	}
 }
 
 /**
- * _partition - Réalise une partition en utilisant le schéma de Lomut
- * @array: Le tableau d'entiers trier
- * @low: L'indice de début du sous-tablea
- * @high: L'indice de fin du sous-tableau
+ * partition - Partitionne un tableau en fonction du pivot
+ * Utilise le schéma de partition Lomut
+ * @array: Tableau à partitionner
+ * @low: Index du premier élément de laartition
+ * @high: Index du dernier élément de la partitn
  * @size: Taille du tableau
- *
- * Return: L'indice du pivot
+ * Return: L'index du pivot après partitionnement
  */
 int _partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
-	int i = low - 1, j;
+	int i = low - 1;
+	int j;
+	int temp = array[i];
 
 	for (j = low; j <= high - 1; j++)
 	{
 		if (array[j] < pivot)
 		{
 			i++;
-			_swap(&array[i], &array[j]);
-			print_array(array, size);
+			if (i != j)
+			{
+				temp = array[i];
+
+				array[i] = array[j];
+				array[j] = temp;
+				print_array(array, size);
+			}
 		}
 	}
-	_swap(&array[i + 1], &array[high]);
-	print_array(array, size);
+	if (array[i + 1] != array[high])
+	{
+		temp = array[i + 1];
 
+		array[i + 1] = array[high];
+		array[high] = temp;
+		print_array(array, size);
+	}
 	return (i + 1);
-}
-
-/**
- * _swap - change les valeurs de deux entiers
- * @a: Pointeur vers le premier entier
- * @b: Pointeur vers le deuxième entie
- */
-void _swap(int *a, int *b)
-{
-	int temp = *a;
-	*a = *b;
-	*b = temp;
 }
